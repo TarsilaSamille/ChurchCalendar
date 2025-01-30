@@ -19,6 +19,7 @@ export async function GET() {
       .map((event: any) => {
         const diffInMilliseconds = Math.abs(event.end.getTime() - event.start.getTime());
         const diffInDays = diffInMilliseconds / (1000 * 60 * 60 * 24);
+        const diffInHours = diffInMilliseconds / (1000 * 60 * 60);
         let start = new Date(event.start.getTime());
         let end = event.end
         ? new Date(event.end.getTime())
@@ -26,6 +27,9 @@ export async function GET() {
         if (diffInDays === 1) {
           start = new Date(event.start.getTime() + 3 * 60 * 60 * 1000);
           end = new Date(event.start.getTime() + 3 * 60 * 60 * 1000);
+        }
+        if (diffInHours === 1) {
+          end = new Date(start.getTime() + 2 * 60 * 60 * 1000);
         }
         return {
           id: event.uid,
