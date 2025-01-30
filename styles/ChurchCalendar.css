@@ -1,0 +1,162 @@
+.calendar-container {
+  font-family: "Playfair Display", serif;
+  background: linear-gradient(to bottom, #fffdd0 / 5, transparent);
+}
+
+.rbc-calendar {
+  background-color: transparent;
+}
+
+.rbc-header {
+  padding: 12px;
+  font-weight: 500;
+  text-transform: uppercase;
+  font-size: 0.875rem;
+  border-bottom: none;
+  border-left: none;
+  letter-spacing: 0.05em;
+  color: #8b7355;
+  font-family: "Inter", sans-serif;
+}
+
+.rbc-month-view {
+  border: none;
+  background-color: transparent;
+}
+
+.rbc-month-row {
+  border-left: none;
+}
+
+.rbc-day-bg {
+  border-left: 1px solid #c4a484;
+  border-bottom: 1px solid #c4a484;
+}
+
+.rbc-date-cell {
+  padding: 8px;
+  text-align: center;
+  font-weight: 400;
+  font-size: 1rem;
+  color: #8b7355;
+}
+
+.rbc-off-range {
+  color: #c4a484;
+}
+
+.rbc-today {
+  background-color: rgba(128, 128, 0, 0.1);
+}
+
+.rbc-toolbar {
+  margin-bottom: 2rem;
+  padding: 0 1rem;
+}
+
+.rbc-toolbar button {
+  color: #8b7355;
+  border: 1px solid #c4a484;
+  background: transparent;
+  padding: 8px 16px;
+  font-weight: 500;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+  text-transform: capitalize;
+}
+
+.rbc-toolbar button:hover {
+  background-color: rgba(128, 128, 0, 0.1);
+  border-color: #808000;
+  color: #808000;
+}
+
+.rbc-toolbar button.rbc-active {
+  background-color: #8b7355;
+  color: #fffdd0;
+  border-color: #8b7355;
+}
+
+.rbc-toolbar button.rbc-active:hover {
+  background-color: #808000;
+  border-color: #808000;
+}
+
+.rbc-toolbar-label {
+  font-weight: 500;
+  font-size: 1.5rem;
+  color: #8b7355;
+  font-family: "Playfair Display", serif;
+  text-transform: uppercase;
+}
+
+.rbc-event {
+  border: none;
+  transition: transform 0.2s ease;
+}
+
+.rbc-event:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 2px 4px rgba(139, 115, 85, 0.2);
+}
+
+.rbc-row-segment {
+  padding: 2px 4px;
+}
+
+.rbc-show-more {
+  color: #808000;
+  font-weight: 500;
+  font-size: 0.875rem;
+  background: transparent;
+}
+
+.rbc-show-more:hover {
+  color: #8b7355;
+  text-decoration: none;
+  background: rgba(128, 128, 0, 0.1);
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 1024px) {
+  .calendar-container {
+    padding: 1rem;
+  }
+
+  .rbc-toolbar {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 1rem;
+  }
+
+  .rbc-toolbar-label {
+    text-align: center;
+    margin: 0.5rem 0;
+  }
+
+  .rbc-calendar {
+    min-height: 500px;
+  }
+}
+
+@media (max-width: 640px) {
+  .rbc-calendar {
+    font-size: 0.875rem;
+  }
+
+  .rbc-toolbar button {
+    padding: 6px 12px;
+    font-size: 0.875rem;
+  }
+
+  .rbc-header {
+    padding: 8px;
+    font-size: 0.75rem;
+  }
+
+  .rbc-date-cell {
+    padding: 4px;
+    font-size: 0.875rem;
+  }
+}
+
