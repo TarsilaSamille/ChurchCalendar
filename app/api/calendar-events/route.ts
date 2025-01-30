@@ -17,7 +17,9 @@ export async function GET() {
     const calendarEvents = Object.values(parsedEvents)
       .filter((event: any) => event.type === "VEVENT")
       .map((event: any) => {
-        const start = new Date(event.start.getTime() + 3 * 60 * 60 * 1000)
+        const start = event.end ? 
+          new Date(event.start.getTime() + 3 * 60 * 60 * 1000) 
+          : new Date(event.start.getTime());
         const end = event.end
           ? new Date(event.end.getTime() + 3 * 60 * 60 * 1000)
           : new Date(start.getTime() + 2 * 60 * 60 * 1000)
