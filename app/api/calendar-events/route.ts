@@ -14,6 +14,7 @@ export async function GET() {
     const icalData = await response.text()
     const parsedEvents = ical.parseICS(icalData)
 
+    
     const calendarEvents = Object.values(parsedEvents)
       .filter((event: any) => event.type === "VEVENT")
       .map((event: any) => {
