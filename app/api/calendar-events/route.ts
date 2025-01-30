@@ -17,13 +17,16 @@ export async function GET() {
     const calendarEvents = Object.values(parsedEvents)
       .filter((event: any) => event.type === "VEVENT")
       .map((event: any) => {
-        const start = event.end ? 
-          new Date(event.start.getTime() + 3 * 60 * 60 * 1000) 
-          : new Date(event.start.getTime());
-        const end = event.end
-          ? new Date(event.end.getTime() + 3 * 60 * 60 * 1000)
-          : new Date(start.getTime() + 2 * 60 * 60 * 1000)
-
+        const diffInMilliseconds = Math.abs(event.end.getTime() - event.start.getTime());
+        const diffInDays = diffInMilliseconds / (1000 * 60 * 60 * 24);
+        let start = new Date(event.start.getTime());
+        let end = event.end
+        ? new Date(event.end.getTime())
+        : new Date(start.getTime() + 2 * 60 * 60 * 1000);
+        if (diffInDays === 1) {
+          start = new Date(event.start.getTime() + 3 * 60 * 60 * 1000);
+          end = new Date(event.start.getTime() + 3 * 60 * 60 * 1000);
+        }
         return {
           id: event.uid,
           title: event.summary,
