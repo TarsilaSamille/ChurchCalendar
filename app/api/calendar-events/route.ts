@@ -14,11 +14,9 @@ export async function GET() {
     const icalData = await response.text()
     const parsedEvents = ical.parseICS(icalData)
 
-    
     const calendarEvents = Object.values(parsedEvents)
       .filter((event: any) => event.type === "VEVENT")
       .map((event: any) => {
-        // Adjust for timezone by subtracting 3 hours
         const start = new Date(event.start.getTime() + 3 * 60 * 60 * 1000)
         const end = event.end
           ? new Date(event.end.getTime() + 3 * 60 * 60 * 1000)
